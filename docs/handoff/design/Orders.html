@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Orders</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#123D2B}a:hover{color:#0B2A1D}
+</style>
+</helmet>
+<div style="width: 390px; height: 1120px; box-sizing: border-box; background: #FFF9F0; color: #242424; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <header style="padding: 24px 20px 10px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div style="display: flex; align-items: center; gap: 4px">
+        <a href="Admin.dc.html" aria-label="Back to dashboard" style="width: 44px; height: 44px; margin-left: -12px; display: flex; align-items: center; justify-content: center; color: #242424"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+        <h1 style="margin: 0; font-size: 24px; font-weight: 800">Orders</h1>
+      </div>
+      <span style="font-size: 13px; font-weight: 600; color: #6B6259">Sat, Oct 17</span>
+    </div>
+    <label style="display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 14px; border-radius: 12px; background: #FFFFFF; border: 1.5px solid #E6DCCB">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B6259" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <input type="search" aria-label="Search orders" placeholder="Name, phone or order #" style="flex: 1; border: 0; outline: none; background: transparent; font: 500 14px 'Plus Jakarta Sans', sans-serif; color: #242424">
+    </label>
+  </header>
+  <nav aria-label="Filter orders" style="display: flex; gap: 8px; padding: 2px 20px 14px; overflow-x: auto">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+      <sc-if value="{{ f.on }}" hint-placeholder-val="{{ false }}">
+        <button type="button" aria-pressed="true" style="flex: none; height: 38px; padding: 0 14px; border-radius: 999px; border: 0; background: #F2AD32; color: #242424; font: 700 13px 'Plus Jakarta Sans', sans-serif">{{ f.label }}</button>
+      </sc-if>
+      <sc-if value="{{ f.off }}" hint-placeholder-val="{{ true }}">
+        <button type="button" aria-pressed="false" onClick="{{ f.pick }}" style="flex: none; height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid #E6DCCB; background: #FFFFFF; color: #242424; font: 600 13px 'Plus Jakarta Sans', sans-serif; cursor: pointer">{{ f.label }}</button>
+      </sc-if>
+    </sc-for>
+  </nav>
+  <main style="flex: 1; padding: 0 20px 28px; display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{ rows }}" as="o" hint-placeholder-count="6">
+      <a href="OrderDetail.dc.html" style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7; color: #242424; text-decoration: none">
+        <div style="display: flex; justify-content: space-between; align-items: baseline">
+          <span style="font-size: 15px; font-weight: 800">#{{ o.num }} · {{ o.name }}</span>
+          <span style="font-size: 15px; font-weight: 800">{{ o.total }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #6B6259">
+          <span>{{ o.phone }}</span>
+          <span>{{ o.items }}</span>
+        </div>
+        <div style="display: flex; gap: 6px">
+          <span style="padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: {{ o.prepBg }}; color: {{ o.prepFg }}">{{ o.prep }}</span>
+          <span style="padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: {{ o.payBg }}; color: {{ o.payFg }}">{{ o.pay }}</span>
+        </div>
+      </a>
+    </sc-for>
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <p style="margin: 24px 0; text-align: center; font-size: 14px; color: #6B6259">No orders match this filter.</p>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1120}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all' };
+  }
+  renderVals() {
+    const prepColors = {
+      'New': ['#E2ECE7', '#123D2B'], 'Confirmed': ['#E2ECE7', '#123D2B'],
+      'Preparing': ['#E3ECF7', '#1F4E86'], 'Ready': ['#FDEBC8', '#6B4700'],
+      'Completed': ['#EFE6D7', '#4A433C'], 'Cancelled': ['#EFE6D7', '#4A433C']
+    };
+    const payColors = {
+      'Paid': ['#DDF3E8', '#0E6B42'], 'Unpaid': ['#FDE3E2', '#8A2A25'],
+      'Partially Paid': ['#FDEBC8', '#6B4700'], 'Refunded': ['#EFE6D7', '#4A433C']
+    };
+    const orders = [
+      { num: 1024, name: 'Sarah K.', phone: '(202) 555-0134', items: '2 items', total: '$33.00', prep: 'Ready', pay: 'Paid' },
+      { num: 1023, name: 'James T.', phone: '(301) 555-0187', items: '3 items', total: '$48.00', prep: 'Preparing', pay: 'Unpaid' },
+      { num: 1022, name: 'Linda M.', phone: '(703) 555-0199', items: '1 item', total: '$16.00', prep: 'Ready', pay: 'Paid' },
+      { num: 1021, name: 'David K.', phone: '(240) 555-0123', items: '2 items', total: '$30.00', prep: 'New', pay: 'Unpaid' },
+      { num: 1020, name: 'Angela B.', phone: '(571) 555-0167', items: '4 items', total: '$62.00', prep: 'Confirmed', pay: 'Partially Paid' },
+      { num: 1019, name: 'Moses W.', phone: '(202) 555-0148', items: '2 items', total: '$31.00', prep: 'Completed', pay: 'Paid' }
+    ];
+    const filterList = [
+      ['all', 'All', () => true],
+      ['new', 'New', (o) => o.prep === 'New'],
+      ['preparing', 'Preparing', (o) => o.prep === 'Preparing'],
+      ['ready', 'Ready', (o) => o.prep === 'Ready'],
+      ['paid', 'Paid', (o) => o.pay === 'Paid'],
+      ['unpaid', 'Unpaid', (o) => o.pay !== 'Paid'],
+      ['completed', 'Completed', (o) => o.prep === 'Completed']
+    ];
+    const cur = filterList.find((f) => f[0] === this.state.filter) || filterList[0];
+    const rows = orders.filter(cur[2]).map((o) => Object.assign({}, o, {
+      prepBg: prepColors[o.prep][0], prepFg: prepColors[o.prep][1],
+      payBg: payColors[o.pay][0], payFg: payColors[o.pay][1]
+    }));
+    return {
+      filters: filterList.map((f) => ({
+        label: f[1] + ' (' + orders.filter(f[2]).length + ')',
+        on: f[0] === cur[0], off: f[0] !== cur[0],
+        pick: () => this.setState({ filter: f[0] })
+      })),
+      rows: rows, empty: rows.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>

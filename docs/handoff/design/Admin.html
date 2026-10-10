@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chef Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#123D2B}a:hover{color:#0B2A1D}
+</style>
+</helmet>
+<div style="width: 390px; height: 1180px; box-sizing: border-box; background: #FFF9F0; color: #242424; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <header style="background: #123D2B; color: #FFF9F0; padding: 28px 20px 72px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <span style="font-family: 'Great Vibes', cursive; font-size: 30px; color: #F2AD32">Mama's Kitchen</span>
+      <div style="width: 40px; height: 40px; border-radius: 999px; background: #F2AD32; color: #242424; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">MK</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <span style="font-size: 13px; color: #C9D6CE">Saturday, Oct 17 · Orders close Fri 8:00 PM</span>
+      <h1 style="margin: 0; font-size: 26px; font-weight: 800">Good morning, Mama</h1>
+    </div>
+  </header>
+  <main style="margin-top: -52px; padding: 0 16px; display: flex; flex-direction: column; gap: 16px">
+    <section style="padding: 18px; border-radius: 20px; background: #FFFFFF; box-shadow: 0 6px 24px rgba(36, 36, 36, 0.08); display: flex; flex-direction: column; gap: 14px">
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+        <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #6B6259">Saturday orders</span><span style="font-size: 28px; font-weight: 800">42</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #6B6259">Expected revenue</span><span style="font-size: 28px; font-weight: 800">$684</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #6B6259">Collected</span><span style="font-size: 22px; font-weight: 800; color: #0E6B42">$512</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #6B6259">Outstanding</span><span style="font-size: 22px; font-weight: 800; color: #A3302B">$172</span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div aria-hidden="true" style="display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: #F4C9C6">
+          <span style="width: 75%; background: #16A365"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600"><span style="color: #0E6B42">31 paid</span><span style="color: #A3302B">11 unpaid</span></div>
+      </div>
+    </section>
+
+    <section style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+      <a href="Orders.dc.html" style="padding: 14px 12px; border-radius: 16px; background: #E3ECF7; color: #1F4E86; text-decoration: none; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; font-weight: 800">8</span><span style="font-size: 12px; font-weight: 600">Preparing</span></a>
+      <a href="Orders.dc.html" style="padding: 14px 12px; border-radius: 16px; background: #FDEBC8; color: #6B4700; text-decoration: none; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; font-weight: 800">12</span><span style="font-size: 12px; font-weight: 600">Ready</span></a>
+      <a href="Customers.dc.html" style="padding: 14px 12px; border-radius: 16px; background: #E2ECE7; color: #123D2B; text-decoration: none; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 22px; font-weight: 800">128</span><span style="font-size: 12px; font-weight: 600">Customers</span></a>
+    </section>
+
+    <a href="MenuEdit.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 16px; background: #F2AD32; color: #242424; font-weight: 800; font-size: 16px; text-decoration: none">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+      Send This Week's Menu
+    </a>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 800">Quick actions</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <a href="MenuEdit.dc.html" style="height: 76px; padding: 14px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7; color: #242424; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16v16H4zM8 9h8M8 13h8M8 17h5"></path></svg>
+          <span style="font-size: 13px; font-weight: 700">Create Weekly Menu</span>
+        </a>
+        <a href="Orders.dc.html" style="height: 76px; padding: 14px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7; color: #242424; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>
+          <span style="font-size: 13px; font-weight: 700">View Orders</span>
+        </a>
+        <a href="Customers.dc.html" style="height: 76px; padding: 14px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7; color: #242424; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18 14.8c1.8.7 3 2.5 3.5 5.2"></path></svg>
+          <span style="font-size: 13px; font-weight: 700">Manage Customers</span>
+        </a>
+        <a href="Events.dc.html" style="height: 76px; padding: 14px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7; color: #242424; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"></path></svg>
+          <span style="font-size: 13px; font-weight: 700">Create Special Event</span>
+        </a>
+      </div>
+    </section>
+
+    <section style="padding: 18px; border-radius: 20px; background: #FFFFFF; border: 1px solid #EFE6D7; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h2 style="margin: 0; font-size: 16px; font-weight: 800">Saturday prep</h2>
+        <a href="#" style="font-size: 13px; font-weight: 700">Full report</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px" role="img" aria-label="Portions to prepare: Jollof Rice 25, Cassava Leaf 18, Fried Plantains 14, Pepper Soup 12">
+        <div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; font-size: 13px"><span style="font-weight: 600">Jollof Rice</span><span style="font-weight: 800">25</span></div><div style="height: 10px; border-radius: 999px; background: #F3ECE0"><div style="width: 100%; height: 10px; border-radius: 999px; background: #123D2B"></div></div></div>
+        <div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; font-size: 13px"><span style="font-weight: 600">Cassava Leaf</span><span style="font-weight: 800">18</span></div><div style="height: 10px; border-radius: 999px; background: #F3ECE0"><div style="width: 72%; height: 10px; border-radius: 999px; background: #123D2B"></div></div></div>
+        <div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; font-size: 13px"><span style="font-weight: 600">Fried Plantains</span><span style="font-weight: 800">14</span></div><div style="height: 10px; border-radius: 999px; background: #F3ECE0"><div style="width: 56%; height: 10px; border-radius: 999px; background: #123D2B"></div></div></div>
+        <div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; font-size: 13px"><span style="font-weight: 600">Pepper Soup</span><span style="font-weight: 800">12</span></div><div style="height: 10px; border-radius: 999px; background: #F3ECE0"><div style="width: 48%; height: 10px; border-radius: 999px; background: #123D2B"></div></div></div>
+      </div>
+    </section>
+  </main>
+  <nav aria-label="Admin" style="margin-top: auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 10px 8px 26px; background: #FFFFFF; border-top: 1px solid #EFE6D7">
+    <a href="Admin.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; font-size: 11px; font-weight: 700; color: #123D2B; text-decoration: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"></path></svg>Home</a>
+    <a href="MenuEdit.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; font-size: 11px; font-weight: 600; color: #6B6259; text-decoration: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16v16H4zM8 9h8M8 13h8"></path></svg>Menus</a>
+    <a href="Orders.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; font-size: 11px; font-weight: 600; color: #6B6259; text-decoration: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Orders</a>
+    <a href="Customers.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; font-size: 11px; font-weight: 600; color: #6B6259; text-decoration: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>Customers</a>
+    <a href="Events.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; font-size: 11px; font-weight: 600; color: #6B6259; text-decoration: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>Events</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

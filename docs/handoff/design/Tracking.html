@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Order Ready — Tracking</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#123D2B}a:hover{color:#0B2A1D}
+</style>
+</helmet>
+<div style="width: 390px; height: 1060px; box-sizing: border-box; background: #FFF9F0; color: #242424; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; gap: 20px; padding: 24px 20px 28px; overflow: hidden">
+  <div role="status" style="display: flex; gap: 12px; padding: 14px; border-radius: 18px; background: #242424; color: #FFF9F0; box-shadow: 0 10px 30px rgba(36, 36, 36, 0.25)">
+    <div style="width: 40px; height: 40px; border-radius: 10px; background: #123D2B; flex: none; display: flex; align-items: center; justify-content: center">
+      <svg width="24" height="24" viewBox="0 0 52 52" fill="none" stroke="#F2AD32" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M22 4c-3 4 3 6 0 10M30 4c-3 4 3 6 0 10"></path><path d="M8 26h36M10 26c0 9 7 15 16 15s16-6 16-15"></path></svg>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 3px">
+      <div style="display: flex; justify-content: space-between; font-size: 12px; color: #C9C1B4"><span style="font-weight: 700; color: #FFF9F0">Mama's Kitchen</span><span>now</span></div>
+      <span style="font-size: 14px; font-weight: 700">Your order is ready!</span>
+      <span style="font-size: 13px; line-height: 1.45; color: #E8E1D5">Your Mama's Kitchen order #1024 is ready for pickup! Thank you for supporting us.</span>
+    </div>
+  </div>
+
+  <header style="display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <h1 style="margin: 0; font-size: 24px; font-weight: 800">Order #1024</h1>
+      <span style="font-size: 13px; color: #6B6259">Pickup Sat, Oct 17 · 12:00 – 1:00 PM</span>
+    </div>
+    <span style="padding: 6px 10px; border-radius: 999px; background: #DDF3E8; color: #0E6B42; font-size: 12px; font-weight: 700">Paid</span>
+  </header>
+
+  <section aria-label="Order status" style="padding: 18px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column">
+    <div style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center"><span style="width: 24px; height: 24px; border-radius: 999px; background: #123D2B; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span style="width: 2px; height: 30px; background: #123D2B"></span></div>
+      <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 14px">Order Received</span><span style="font-size: 12px; color: #6B6259">Thu, Oct 15 · 6:42 PM</span></div>
+    </div>
+    <div style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center"><span style="width: 24px; height: 24px; border-radius: 999px; background: #123D2B; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span style="width: 2px; height: 30px; background: #123D2B"></span></div>
+      <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 14px">Confirmed</span><span style="font-size: 12px; color: #6B6259">Thu, Oct 15 · 8:10 PM</span></div>
+    </div>
+    <div style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center"><span style="width: 24px; height: 24px; border-radius: 999px; background: #123D2B; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span style="width: 2px; height: 30px; background: #123D2B"></span></div>
+      <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 14px">Preparing</span><span style="font-size: 12px; color: #6B6259">Sat, Oct 17 · 9:30 AM</span></div>
+    </div>
+    <div style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center"><span style="width: 24px; height: 24px; box-sizing: border-box; border-radius: 999px; background: #F2AD32; border: 5px solid #FDEBC8"></span><span style="width: 2px; height: 30px; background: #E6DCCB"></span></div>
+      <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 800; font-size: 14px">Ready for Pickup</span><span style="font-size: 12px; color: #6B6259">Sat, Oct 17 · 11:52 AM</span></div>
+    </div>
+    <div style="display: flex; gap: 14px">
+      <div style="display: flex; flex-direction: column; align-items: center"><span style="width: 24px; height: 24px; box-sizing: border-box; border-radius: 999px; border: 2px solid #CFC3AF"></span></div>
+      <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 14px; color: #6B6259">Completed</span></div>
+    </div>
+  </section>
+
+  <section style="padding: 18px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 4px">
+    <h2 style="margin: 0 0 6px; font-size: 16px; font-weight: 800">Notify me by</h2>
+    <sc-for list="{{ prefs }}" as="p" hint-placeholder-count="5">
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; border-top: 1px solid #F3ECE0">
+        <span style="font-size: 14px; font-weight: 500">{{ p.label }}</span>
+        <sc-if value="{{ p.on }}" hint-placeholder-val="{{ true }}">
+          <button type="button" role="switch" aria-checked="true" aria-label="{{ p.label }}" onClick="{{ p.toggle }}" style="width: 50px; height: 30px; border-radius: 999px; border: 0; background: #123D2B; padding: 3px; display: flex; justify-content: flex-end; cursor: pointer"><span style="width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF"></span></button>
+        </sc-if>
+        <sc-if value="{{ p.off }}" hint-placeholder-val="{{ false }}">
+          <button type="button" role="switch" aria-checked="false" aria-label="{{ p.label }}" onClick="{{ p.toggle }}" style="width: 50px; height: 30px; border-radius: 999px; border: 0; background: #CFC3AF; padding: 3px; display: flex; justify-content: flex-start; cursor: pointer"><span style="width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF"></span></button>
+        </sc-if>
+      </div>
+    </sc-for>
+  </section>
+
+  <a href="Main.dc.html" style="display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 16px; border: 1.5px solid #D6CAB5; color: #242424; font-weight: 700; font-size: 15px; text-decoration: none">Back to Home</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1060}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { push: true, email: true, sms: false, menus: true, holiday: true };
+  }
+  renderVals() {
+    const s = this.state;
+    const rows = [
+      ['push', 'Push notifications'],
+      ['email', 'Email'],
+      ['sms', 'Text message (SMS)'],
+      ['menus', 'New Thursday menus'],
+      ['holiday', 'Holiday & event menus']
+    ];
+    return {
+      prefs: rows.map((r) => ({
+        label: r[1], on: !!s[r[0]], off: !s[r[0]],
+        toggle: () => this.setState({ [r[0]]: !s[r[0]] })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

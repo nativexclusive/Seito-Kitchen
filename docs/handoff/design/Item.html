@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cassava Leaf — Customize</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#123D2B}a:hover{color:#0B2A1D}
+</style>
+</helmet>
+<div style="width: 390px; height: 1300px; box-sizing: border-box; background: #FFF9F0; color: #242424; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <div style="position: relative; height: 290px; flex: none">
+    <img src="../images/cassava.jpg" alt="Cassava leaf with beef in a bowl" style="width: 390px; height: 290px; object-fit: cover; display: block">
+    <a href="Menu.dc.html" aria-label="Back to menu" style="position: absolute; top: 24px; left: 16px; width: 44px; height: 44px; border-radius: 999px; background: rgba(255, 249, 240, 0.92); color: #242424; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+  </div>
+  <div style="margin-top: -24px; position: relative; flex: 1; border-radius: 24px 24px 0 0; background: #FFF9F0; padding: 22px 20px 0; display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+        <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Cassava Leaf</h1>
+        <span style="font-size: 20px; font-weight: 800">$16.00</span>
+      </div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #6B6259">Authentic Liberian cassava leaf slow-cooked with palm oil, spices and your choice of meat. Served with white rice.</p>
+    </div>
+
+    <section style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <h2 style="margin: 0; font-size: 16px; font-weight: 700">Choose your protein</h2>
+        <span style="font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: #E2ECE7; color: #123D2B">REQUIRED</span>
+      </div>
+      <sc-for list="{{ proteins }}" as="p" hint-placeholder-count="4">
+        <sc-if value="{{ p.on }}" hint-placeholder-val="{{ false }}">
+          <button type="button" aria-pressed="true" onClick="{{ p.pick }}" style="display: flex; align-items: center; gap: 12px; width: 100%; height: 50px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #123D2B; background: #EEF4F0; font: 600 14px 'Plus Jakarta Sans', sans-serif; color: #242424; cursor: pointer">
+            <span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 999px; border: 6px solid #123D2B; background: #FFFFFF; flex: none"></span>
+            <span style="flex: 1; text-align: left">{{ p.label }}</span>
+            <span style="font-weight: 700">{{ p.priceLabel }}</span>
+          </button>
+        </sc-if>
+        <sc-if value="{{ p.off }}" hint-placeholder-val="{{ true }}">
+          <button type="button" aria-pressed="false" onClick="{{ p.pick }}" style="display: flex; align-items: center; gap: 12px; width: 100%; height: 50px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; font: 500 14px 'Plus Jakarta Sans', sans-serif; color: #242424; cursor: pointer">
+            <span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 999px; border: 2px solid #A89C89; background: #FFFFFF; flex: none"></span>
+            <span style="flex: 1; text-align: left">{{ p.label }}</span>
+            <span style="color: #6B6259">{{ p.priceLabel }}</span>
+          </button>
+        </sc-if>
+      </sc-for>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 700">Portion size</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{ portions }}" as="s" hint-placeholder-count="2">
+          <sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}">
+            <button type="button" aria-pressed="true" onClick="{{ s.pick }}" style="height: 60px; border-radius: 12px; border: 1.5px solid #123D2B; background: #123D2B; color: #FFF9F0; font: 700 14px 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer">{{ s.label }}<span style="font-size: 12px; font-weight: 500; color: #D8D0C2">{{ s.priceLabel }}</span></button>
+          </sc-if>
+          <sc-if value="{{ s.off }}" hint-placeholder-val="{{ true }}">
+            <button type="button" aria-pressed="false" onClick="{{ s.pick }}" style="height: 60px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; color: #242424; font: 600 14px 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer">{{ s.label }}<span style="font-size: 12px; font-weight: 500; color: #6B6259">{{ s.priceLabel }}</span></button>
+          </sc-if>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <h2 style="margin: 0; font-size: 16px; font-weight: 700">Add-ons</h2>
+        <span style="font-size: 12px; color: #6B6259">Optional</span>
+      </div>
+      <sc-for list="{{ addons }}" as="a" hint-placeholder-count="3">
+        <sc-if value="{{ a.on }}" hint-placeholder-val="{{ false }}">
+          <button type="button" aria-pressed="true" onClick="{{ a.toggle }}" style="display: flex; align-items: center; gap: 12px; width: 100%; height: 50px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #123D2B; background: #EEF4F0; font: 600 14px 'Plus Jakarta Sans', sans-serif; color: #242424; cursor: pointer">
+            <span style="width: 20px; height: 20px; border-radius: 6px; background: #123D2B; flex: none; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
+            <span style="flex: 1; text-align: left">{{ a.label }}</span>
+            <span style="font-weight: 700">{{ a.priceLabel }}</span>
+          </button>
+        </sc-if>
+        <sc-if value="{{ a.off }}" hint-placeholder-val="{{ true }}">
+          <button type="button" aria-pressed="false" onClick="{{ a.toggle }}" style="display: flex; align-items: center; gap: 12px; width: 100%; height: 50px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; font: 500 14px 'Plus Jakarta Sans', sans-serif; color: #242424; cursor: pointer">
+            <span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 6px; border: 2px solid #A89C89; flex: none"></span>
+            <span style="flex: 1; text-align: left">{{ a.label }}</span>
+            <span style="color: #6B6259">{{ a.priceLabel }}</span>
+          </button>
+        </sc-if>
+      </sc-for>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 8px">
+      <label for="instructions" style="font-size: 16px; font-weight: 700">Special instructions</label>
+      <textarea id="instructions" rows="3" placeholder="e.g. Please make it spicy, no fish, extra sauce." style="box-sizing: border-box; width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; font: 400 14px 'Plus Jakarta Sans', sans-serif; color: #242424; resize: none"></textarea>
+    </section>
+  </div>
+  <div style="flex: none; display: flex; align-items: center; gap: 12px; padding: 16px 20px 28px; background: #FFFFFF; border-top: 1px solid #EFE6D7">
+    <div style="display: flex; align-items: center; gap: 4px; height: 52px; padding: 0 4px; border-radius: 14px; border: 1.5px solid #E6DCCB">
+      <button type="button" aria-label="Decrease quantity" onClick="{{ dec }}" style="width: 44px; height: 44px; border: 0; background: transparent; color: #242424; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+      <span aria-live="polite" style="min-width: 20px; text-align: center; font-weight: 800; font-size: 16px">{{ qty }}</span>
+      <button type="button" aria-label="Increase quantity" onClick="{{ inc }}" style="width: 44px; height: 44px; border: 0; background: transparent; color: #242424; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+    </div>
+    <a href="Cart.dc.html" style="flex: 1; height: 52px; border-radius: 14px; background: #F2AD32; color: #242424; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; text-decoration: none">Add to Order · {{ total }}</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { protein: 'chicken', portion: 'regular', addons: {}, qty: 1 };
+  }
+  renderVals() {
+    const s = this.state;
+    const money = (n) => '$' + n.toFixed(2);
+    const extra = (n) => (n === 0 ? 'Included' : '+' + money(n));
+    const proteinList = [
+      { id: 'chicken', label: 'Chicken', price: 0 },
+      { id: 'beef', label: 'Beef', price: 2 },
+      { id: 'goat', label: 'Goat', price: 4 },
+      { id: 'fish', label: 'Fish', price: 3 }
+    ];
+    const portionList = [
+      { id: 'regular', label: 'Regular', price: 0 },
+      { id: 'large', label: 'Large', price: 4 }
+    ];
+    const addonList = [
+      { id: 'rice', label: 'Extra Rice', price: 3 },
+      { id: 'meat', label: 'Extra Meat', price: 5 },
+      { id: 'pepper', label: 'Extra Pepper', price: 0 }
+    ];
+    let unit = 16;
+    const proteins = proteinList.map((p) => {
+      const on = s.protein === p.id;
+      if (on) unit += p.price;
+      return { label: p.label, priceLabel: extra(p.price), on: on, off: !on, pick: () => this.setState({ protein: p.id }) };
+    });
+    const portions = portionList.map((p) => {
+      const on = s.portion === p.id;
+      if (on) unit += p.price;
+      return { label: p.label, priceLabel: extra(p.price), on: on, off: !on, pick: () => this.setState({ portion: p.id }) };
+    });
+    const addons = addonList.map((a) => {
+      const on = !!s.addons[a.id];
+      if (on) unit += a.price;
+      return {
+        label: a.label, priceLabel: a.price === 0 ? 'Free' : '+' + money(a.price), on: on, off: !on,
+        toggle: () => this.setState({ addons: Object.assign({}, s.addons, { [a.id]: !on }) })
+      };
+    });
+    return {
+      proteins: proteins, portions: portions, addons: addons, qty: s.qty,
+      total: money(unit * s.qty),
+      inc: () => this.setState({ qty: Math.min(20, s.qty + 1) }),
+      dec: () => this.setState({ qty: Math.max(1, s.qty - 1) })
+    };
+  }
+}
+</script>
+</body>
+</html>

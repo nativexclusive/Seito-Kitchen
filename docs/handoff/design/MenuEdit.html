@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Create / Edit Menu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#123D2B}a:hover{color:#0B2A1D}
+</style>
+</helmet>
+<div style="width: 390px; height: 1340px; box-sizing: border-box; background: #FFF9F0; color: #242424; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 24px 16px 8px">
+    <a href="Admin.dc.html" aria-label="Back to dashboard" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #242424"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <h1 style="margin: 0; font-size: 20px; font-weight: 800">Create Menu</h1>
+    <span style="padding: 6px 10px; border-radius: 999px; background: #EFE6D7; color: #4A433C; font-size: 12px; font-weight: 700">Draft</span>
+  </header>
+  <main style="flex: 1; padding: 8px 20px 0; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; gap: 6px; padding: 4px; border-radius: 14px; background: #F1E8D8; overflow-x: auto">
+      <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+        <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}">
+          <button type="button" aria-pressed="true" style="flex: none; height: 40px; padding: 0 14px; border: 0; border-radius: 10px; background: #F2AD32; font: 700 13px 'Plus Jakarta Sans', sans-serif; color: #242424">{{ t.label }}</button>
+        </sc-if>
+        <sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}">
+          <button type="button" aria-pressed="false" onClick="{{ t.pick }}" style="flex: none; height: 40px; padding: 0 14px; border: 0; border-radius: 10px; background: transparent; font: 600 13px 'Plus Jakarta Sans', sans-serif; color: #4A433C; cursor: pointer">{{ t.label }}</button>
+        </sc-if>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="mtitle" style="font-size: 13px; font-weight: 600">Menu title</label>
+      <input id="mtitle" type="text" value="Saturday Menu — Oct 17" style="box-sizing: border-box; height: 48px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; font: 500 15px 'Plus Jakarta Sans', sans-serif; color: #242424">
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+        <label for="pdate" style="font-size: 13px; font-weight: 600">Pickup date</label>
+        <input id="pdate" type="text" value="Sat, Oct 17" style="box-sizing: border-box; width: 100%; height: 48px; padding: 0 12px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; font: 500 15px 'Plus Jakarta Sans', sans-serif; color: #242424">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+        <label for="cutoff" style="font-size: 13px; font-weight: 600">Order deadline</label>
+        <input id="cutoff" type="text" value="Fri, Oct 16 · 8 PM" style="box-sizing: border-box; width: 100%; height: 48px; padding: 0 12px; border-radius: 12px; border: 1.5px solid #E6DCCB; background: #FFFFFF; font: 500 15px 'Plus Jakarta Sans', sans-serif; color: #242424">
+      </div>
+    </div>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h2 style="margin: 0; font-size: 16px; font-weight: 800">Dishes</h2>
+        <span style="font-size: 12px; color: #6B6259">Price · portions · sold out</span>
+      </div>
+      <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="4">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7">
+          <img src="{{ d.img }}" alt="{{ d.name }}" style="width: 56px; height: 56px; border-radius: 12px; object-fit: cover; flex: none">
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+            <span style="font-size: 14px; font-weight: 700">{{ d.name }}</span>
+            <span style="font-size: 12px; color: #6B6259">{{ d.meta }}</span>
+          </div>
+          <sc-if value="{{ d.sold }}" hint-placeholder-val="{{ false }}">
+            <button type="button" aria-pressed="true" onClick="{{ d.toggle }}" style="height: 36px; padding: 0 10px; border-radius: 10px; border: 0; background: #FDE3E2; color: #8A2A25; font: 700 12px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Sold out</button>
+          </sc-if>
+          <sc-if value="{{ d.open }}" hint-placeholder-val="{{ true }}">
+            <button type="button" aria-pressed="false" onClick="{{ d.toggle }}" style="height: 36px; padding: 0 10px; border-radius: 10px; border: 1px solid #E6DCCB; background: #FFFFFF; color: #4A433C; font: 600 12px 'Plus Jakarta Sans', sans-serif; cursor: pointer">Available</button>
+          </sc-if>
+        </div>
+      </sc-for>
+      <button type="button" style="height: 50px; border-radius: 14px; border: 1.5px dashed #B9AE9C; background: transparent; font: 700 14px 'Plus Jakarta Sans', sans-serif; color: #123D2B; cursor: pointer">+ Add Another Dish</button>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFE6D7">
+      <h2 style="margin: 0; font-size: 15px; font-weight: 800">Share when published</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <button type="button" style="height: 64px; border-radius: 12px; border: 0; background: #F6F0E6; font: 600 12px 'Plus Jakarta Sans', sans-serif; color: #242424; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>SMS</button>
+        <button type="button" style="height: 64px; border-radius: 12px; border: 0; background: #F6F0E6; font: 600 12px 'Plus Jakarta Sans', sans-serif; color: #242424; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20l1.4-4A8 8 0 1112 20a8 8 0 01-4-1z"></path></svg>WhatsApp</button>
+        <button type="button" style="height: 64px; border-radius: 12px; border: 0; background: #F6F0E6; font: 600 12px 'Plus Jakarta Sans', sans-serif; color: #242424; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>Email</button>
+        <button type="button" style="height: 64px; border-radius: 12px; border: 0; background: #F6F0E6; font: 600 12px 'Plus Jakarta Sans', sans-serif; color: #242424; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#123D2B" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"></path></svg>Copy link</button>
+      </div>
+      <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: #123D2B"> Notify 96 subscribed customers</label>
+    </section>
+  </main>
+  <div style="padding: 18px 20px 28px; display: flex; flex-direction: column; gap: 10px">
+    <a href="Menu.dc.html" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 16px; background: #F2AD32; color: #242424; font-weight: 800; font-size: 16px; text-decoration: none">Publish &amp; Send Menu</a>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <button type="button" style="height: 50px; border-radius: 14px; border: 1.5px solid #D6CAB5; background: transparent; font: 700 14px 'Plus Jakarta Sans', sans-serif; color: #242424">Save Draft</button>
+      <a href="Menu.dc.html" style="display: flex; align-items: center; justify-content: center; height: 50px; box-sizing: border-box; border-radius: 14px; border: 1.5px solid #D6CAB5; font-weight: 700; font-size: 14px; color: #242424; text-decoration: none">Preview</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1340}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { type: 'weekly', sold: { fufu: true } };
+  }
+  renderVals() {
+    const s = this.state;
+    const typeList = [['weekly', 'Weekly Saturday'], ['holiday', 'Holiday'], ['event', 'Special Event'], ['catering', 'Catering']];
+    const dishList = [
+      { id: 'jollof', name: 'Jollof Rice & Chicken', meta: '$15.00 · 30 portions', img: '../images/jollof.jpg' },
+      { id: 'cassava', name: 'Cassava Leaf', meta: '$16.00 · 20 portions', img: '../images/cassavaT.jpg' },
+      { id: 'pepper', name: 'Pepper Soup', meta: '$14.00 · 15 portions', img: '../images/pepper.jpg' },
+      { id: 'fufu', name: 'Fufu & Soup', meta: '$15.00 · 12 portions', img: '../images/fufu.jpg' }
+    ];
+    return {
+      types: typeList.map((t) => ({ label: t[1], on: s.type === t[0], off: s.type !== t[0], pick: () => this.setState({ type: t[0] }) })),
+      dishes: dishList.map((d) => {
+        const sold = !!s.sold[d.id];
+        return Object.assign({}, d, {
+          sold: sold, open: !sold,
+          toggle: () => this.setState({ sold: Object.assign({}, s.sold, { [d.id]: !sold }) })
+        });
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>
